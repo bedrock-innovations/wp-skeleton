@@ -1,0 +1,26 @@
+#App
+app/uploads/*
+!app/uploads/.gitkeep
+app/themes/*
+!app/themes/index.php
+app/plugins/*
+!app/plugins/index.php
+app/mu-plugins/*/
+app/upgrade
+
+#WordPress
+admin
+.htaccess
+
+
+#SQL dumps
+sql-dump-*.sql
+*.sql
+*.zip
+*.tgz
+*.tar.gz
+
+#Local
+local-config.php
+.nova
+.DS_Store

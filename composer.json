@@ -1,0 +1,47 @@
+{
+    "name"        : "bedrock-innovations/wordpress-skeleton",
+    "description" : "Starter WordPress stack for unmanaged hosting environments",
+    "authors"     : [{"name"    : "Bedrock Innovations, LLC", "homepage": "https://bedrockinnovations.com/"}],
+    "type": "project",
+    "license": ["MIT"],
+    "repositories": [
+        {"type": "composer", "url": "https://wpackagist.org", "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]},
+        {"type": "composer", "url": "https://composer.bedrockinnovations.com/satispress", "only": ["bdrck/*"]}
+    ],
+        "require"     : {
+        "php": ">=7.4",
+        "composer/installers": "^2.0.0",
+        "roots/bedrock-autoloader": "^1.0",
+        "roots/bedrock-disallow-indexing": "^2.0",
+        "roots/wordpress": "^5.9",
+        "wpackagist-plugin/spinupwp": "^1.4",
+        "aws/aws-sdk-php": "^3.209"
+    },
+    "require-dev" : {
+        "wpackagist-plugin/user-switching"            : "*"
+    },
+    "config"      : {
+        "vendor-dir": "../vendor",
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra"       : {
+        "installer-paths": {
+          "app/mu-plugins/{$name}/": ["type:wordpress-muplugin", "humanmade/aws-ses-wp-mail", "humanmade/s3-uploads"],
+          "app/plugins/{$name}/": ["type:wordpress-plugin"],
+          "app/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "admin"
+    },
+    "scripts": {
+        "post-root-package-install": [
+          "php -r \"copy('config-sample.php', '../wp-config.php');\"",
+          "git clone https://github.com/humanmade/aws-ses-wp-mail app/mu-plugins/aws-ses-wp-mail"
+        ],
+        "test": [
+          "phpcs"
+        ]
+      }
+}
