@@ -4,7 +4,7 @@ This is simply a skeleton repo for a WordPress site. Clone it to jump-start your
 
 ## Assumptions
 
-* WordPress as a Git submodule in `/wp/`
+* WordPress as a composer package in /os/
 * Custom content directory in `/content/` (cleaner, and also because it can't be in `/wp/`)
 * `wp-config.php` in the root (because it can't be in `/wp/`)
 * All writable directories are symlinked to similarly named locations under `/shared/`.
